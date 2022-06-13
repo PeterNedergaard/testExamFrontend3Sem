@@ -53,16 +53,32 @@ function apiFacade() {
             .then(handleHttpErrors)
     }
 
+
+    const getAllBoats = async() => {
+
+        return await fetch(URL + "/api/info/allboats")
+            .then(handleHttpErrors)
+    }
+
+
     const getBoatsByHarbour = async(harbourName) => {
 
         return await fetch(URL + "/api/info/boats/" + harbourName)
             .then(handleHttpErrors)
     }
 
+
     const createBoat = async(boatName,boatBrand,boatMake,boatImage) => {
         const options = makeOptions("POST", false,{brand: boatBrand, make: boatMake,
                                                                         name: boatName, image: boatImage});
         return fetch(URL + "/api/info/createboat", options)
+    }
+
+
+    const setHarbour = async(boatName, harbourName) => {
+        const options = makeOptions("POST", false,{boatName: boatName, harbourName: harbourName});
+
+        return fetch(URL + "/api/info/setharbour", options)
     }
 
 
@@ -116,7 +132,9 @@ function apiFacade() {
         getAllOwners,
         getAllHarbours,
         getBoatsByHarbour,
-        createBoat
+        createBoat,
+        getAllBoats,
+        setHarbour
     }
 }
 

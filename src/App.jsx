@@ -9,7 +9,7 @@ function LogIn({login}) {
     const [loginCredentials, setLoginCredentials] = useState(init);
 
     const performLogin = (evt) => {
-        evt.preventDefault();
+        // evt.preventDefault();
         login(loginCredentials.username, loginCredentials.password);
     }
     const onChange = (evt) => {
@@ -30,7 +30,11 @@ function LogIn({login}) {
                     <label htmlFor="exampleInputPassword1">Password</label>
                     <input type="password" className="form-control" id="password" placeholder="Password"/>
                 </div>
-                <button className="btn btn-primary login-element" onClick={performLogin}>Login</button>
+
+                <Link to="/">
+                    <button className="btn btn-primary login-element" onClick={performLogin}>Login</button>
+                </Link>
+
             </form>
         </div>
     )
@@ -72,7 +76,10 @@ function App() {
             {!loggedIn ? (<LogIn login={login}/>) :
                 (<div className="header">
                     <LoggedIn/>
-                    <button className="btn btn-danger" id="logout-btn" onClick={logout}>Logout</button>
+
+                    <Link to="/">
+                        <button className="btn btn-danger" id="logout-btn" onClick={logout}>Logout</button>
+                    </Link>
 
                     <nav
                         style={{

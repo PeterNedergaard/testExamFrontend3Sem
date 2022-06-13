@@ -54,9 +54,9 @@ const HarbourBoats = props => {
 
                         <option selected="true" disabled="disabled">Choose a harbour:</option>
 
-                        {harbourList.map((harbour) => {
+                        {harbourList.map((harbour, index) => {
                             return(
-                                <option value={harbour.name}>{harbour.name}</option>
+                                <option key={index} value={harbour.name}>{harbour.name}</option>
                             )
                         })}
 

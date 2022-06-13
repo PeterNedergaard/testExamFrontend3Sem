@@ -13,6 +13,7 @@ import Jokes from "./routes/jokes";
 import AllOwners from "./routes/allOwners";
 import HarbourBoats from "./routes/harbourBoats";
 import CreateBoat from "./routes/createBoat";
+import ConnectBoatHarbour from "./routes/connectBoatHarbour";
 
 
 
@@ -28,6 +29,7 @@ render(
                 <Route path="/allowners" element={<AllOwners/>}/>
                 <Route path="/harbourboats" element={<HarbourBoats/>}/>
                 <Route path="/createboat" element={<CreateBoat/>}/>
+                <Route path="/connect" element={<ConnectBoatHarbour/>}/>
             </Route>
         </Routes>
     </BrowserRouter>,

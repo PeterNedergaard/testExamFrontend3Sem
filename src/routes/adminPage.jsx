@@ -12,6 +12,7 @@ const AdminPage = () => {
 
                         <div className="link-container">
                             <Link to="/createboat">Create boat</Link> |{" "}
+                            <Link to="/connect">Connect boat with harbour</Link> |{" "}
                         </div>
                     </div>)
                     :
