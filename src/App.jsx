@@ -20,7 +20,6 @@ function LogIn({login}) {
 
 
 
-
     return (
 
         <div className="container">
@@ -55,8 +54,33 @@ function LoggedIn() {
 
     return (
         <div className="header-info">
-            <h5>User: {facade.getName()}</h5>
-            <h5>Role: {facade.getRoles()}</h5>
+
+            <div className="nameAndRoleContainer">
+                <h5>User: {facade.getName()}</h5>
+                <h5>Role: {facade.getRoles()}</h5>
+            </div>
+
+            <div>
+
+                <div className="link-container">
+
+                    <button className="btn btn-light menuBtn firstMenuBtn">
+                        <Link to="/welcome" style={{textDecoration: 'none', color:'black'}}>Welcome page</Link>
+                    </button>
+
+                    <button className="btn btn-light menuBtn">
+                        <Link to="/userpage" style={{textDecoration: 'none', color:'black'}}>User page</Link>
+                    </button>
+
+                    <button className="btn btn-light menuBtn">
+                        <Link to="/adminpage" style={{textDecoration: 'none', color:'black'}}>Admin page</Link>
+                    </button>
+
+                </div>
+
+            </div>
+
+
         </div>
     )
 
@@ -76,29 +100,51 @@ function App() {
 
     }
 
+
+    useEffect(() => {
+
+        if(apiFacade.loggedIn() === true){
+            setLoggedIn(true);
+        }
+
+    }, [])
+
+
     return (
         <div>
             {!loggedIn ? (<LogIn login={login}/>) :
                 (<div className="header">
-                    <LoggedIn/>
+
+                    <nav style={{borderBottom: "solid 1px", paddingBottom: "1rem",}}>
+                        <LoggedIn/>
+                    </nav>
 
                     <button className="btn btn-danger" id="logout-btn" onClick={logout}>Logout</button>
 
-                    <nav
-                        style={{
-                            borderBottom: "solid 1px",
-                            paddingBottom: "1rem",
-                        }}
-                    >
+                    {/*<nav*/}
+                    {/*    style={{*/}
+                    {/*        borderBottom: "solid 1px",*/}
+                    {/*        paddingBottom: "1rem",*/}
+                    {/*    }}*/}
+                    {/*>*/}
 
-                        <div className="link-container">
-                            <Link to="/welcome">Welcome page</Link> |{" "}
-                            <Link to="/userpage">User page</Link> |{" "}
-                            <Link to="/adminpage">Admin page</Link> |{" "}
-                            <Link to="/jokes">Jokes</Link>
-                        </div>
+                    {/*    <div className="link-container">*/}
 
-                    </nav>
+                    {/*        <button className="btn btn-light menuBtn firstMenuBtn">*/}
+                    {/*            <Link to="/welcome" style={{textDecoration: 'none', color:'black'}}>Welcome page</Link>*/}
+                    {/*        </button>*/}
+
+                    {/*        <button className="btn btn-light menuBtn">*/}
+                    {/*            <Link to="/userpage" style={{textDecoration: 'none', color:'black'}}>User page</Link>*/}
+                    {/*        </button>*/}
+
+                    {/*        <button className="btn btn-light menuBtn">*/}
+                    {/*            <Link to="/adminpage" style={{textDecoration: 'none', color:'black'}}>Admin page</Link>*/}
+                    {/*        </button>*/}
+
+                    {/*    </div>*/}
+
+                    {/*</nav>*/}
                     <Outlet/>
 
                 </div>)}

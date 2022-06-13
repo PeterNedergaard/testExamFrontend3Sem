@@ -1,4 +1,20 @@
 
+.menuBtn {
+  border-right: 1px black solid;
+  border-radius: 0px;
+}
+
+
+.menuBtnText {
+  text-decoration: none;
+}
+
+
+.firstMenuBtn {
+  border-left: 1px black solid;
+}
+
+
 .login-container {
   display: flex;
   justify-content: center;
@@ -34,11 +50,27 @@
 }
 
 .header-info {
+  display: flex;
+  justify-content: center;
   margin-bottom: 40px;
+  flex-direction: row;
+  width: 100%;
+}
+
+.nameAndRoleContainer {
+  position:absolute;
+  top:0;
+  left:0;
+  margin: 20px;
 }
 
 .title {
   margin: 20px;
+}
+
+
+.headerContainer {
+  flex-direction: row;
 }
 
 .link-container {
@@ -60,6 +92,7 @@
 
 body{
   background-color: #ccf7ff;
+  font-family: Bahnschrift;
 }
 
 

@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 const DeleteBoat = () => {
 
     const [boatList, setBoatList] = useState([]);
-    const [selectedBoat, setSelectedBoat] = useState();
+    const [selectedBoat, setSelectedBoat] = useState("");
 
     useEffect(() => {
 
@@ -25,7 +25,10 @@ const DeleteBoat = () => {
     }
 
     const btnHandler = () => {
-        apiFacade.deleteBoat(selectedBoat);
+        if(selectedBoat !== ""){
+            apiFacade.deleteBoat(selectedBoat);
+            window.location.reload();
+        }
     }
 
 
@@ -39,7 +42,7 @@ const DeleteBoat = () => {
                     <div className="harbourDropdown">
                         <select onClick={clickHandler} name="boats" id="boats">
 
-                            <option selected="true" disabled="disabled">Choose a boat:</option>
+                            <option selected="true" disabled="disabled" value="">Choose a boat:</option>
 
                             {boatList.map((boat, index) => {
                                 return(
