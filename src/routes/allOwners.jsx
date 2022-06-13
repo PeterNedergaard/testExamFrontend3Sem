@@ -13,13 +13,13 @@ const AllOwners = props => {
             const allOwners = await apiFacade.getAllOwners();
 
             setOwnerList(allOwners);
+
+            console.log(ownerList);
         }
 
         fetch();
 
     }, [])
-
-
 
 
 

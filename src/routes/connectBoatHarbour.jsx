@@ -41,8 +41,6 @@ const ConnectBoatHarbour = props => {
     }
 
     const btnHandler = () => {
-        console.log(selectedHarbour);
-        console.log(selectedBoat);
         apiFacade.setHarbour(selectedBoat,selectedHarbour);
     }
 

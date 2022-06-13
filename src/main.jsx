@@ -14,6 +14,7 @@ import AllOwners from "./routes/allOwners";
 import HarbourBoats from "./routes/harbourBoats";
 import CreateBoat from "./routes/createBoat";
 import ConnectBoatHarbour from "./routes/connectBoatHarbour";
+import DeleteBoat from "./routes/deleteBoat";
 
 
 
@@ -30,6 +31,7 @@ render(
                 <Route path="/harbourboats" element={<HarbourBoats/>}/>
                 <Route path="/createboat" element={<CreateBoat/>}/>
                 <Route path="/connect" element={<ConnectBoatHarbour/>}/>
+                <Route path="/deleteboat" element={<DeleteBoat/>}/>
             </Route>
         </Routes>
     </BrowserRouter>,

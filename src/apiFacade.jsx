@@ -82,6 +82,13 @@ function apiFacade() {
     }
 
 
+    const deleteBoat = async(boatName) => {
+        const options = makeOptions("POST", false,{boatName: boatName});
+
+        return fetch(URL + "/api/info/deleteboat", options)
+    }
+
+
     const login = (user, password) => {
         const options = makeOptions("POST", true,{username: user, password: password });
         return fetch(URL + "/api/login", options)
@@ -134,7 +141,8 @@ function apiFacade() {
         getBoatsByHarbour,
         createBoat,
         getAllBoats,
-        setHarbour
+        setHarbour,
+        deleteBoat
     }
 }
 

@@ -6,8 +6,9 @@ const HarbourBoats = props => {
 
 
     const [harbourList, setHarbourList] = useState([]);
-    const [selected, setSelected] = useState();
+    const [selected, setSelected] = useState("");
     const [boatList, setBoatList] = useState([]);
+    const [reload, setReload] = useState(false);
 
 
     useEffect(() => {
@@ -26,20 +27,25 @@ const HarbourBoats = props => {
     useEffect(() => {
 
         const fetchBoats = async() => {
-            const boats = await apiFacade.getBoatsByHarbour(selected);
+            if (selected !== ""){
+                const boats = await apiFacade.getBoatsByHarbour(selected);
 
-            setBoatList(boats);
+                setBoatList(boats);
+            }
         }
 
         fetchBoats();
 
-        console.log(boatList);
+    }, [reload])
 
-    }, [selected])
 
 
     const clickHandler = (event) => {
         setSelected(event.target.value);
+    }
+
+    const btnHandler = () => {
+        setReload(!reload);
     }
 
 
@@ -52,7 +58,7 @@ const HarbourBoats = props => {
                 <div className="harbourDropdown">
                     <select onClick={clickHandler} name="harbours" id="harbours">
 
-                        <option selected="true" disabled="disabled">Choose a harbour:</option>
+                        <option selected="true" disabled="disabled" value="">Choose a harbour:</option>
 
                         {harbourList.map((harbour, index) => {
                             return(
@@ -61,6 +67,10 @@ const HarbourBoats = props => {
                         })}
 
                     </select>
+
+                    <br/>
+
+                    <button onClick={btnHandler} className="btn btn-secondary">Get boats</button>
                 </div>
 
             </div>

@@ -2,9 +2,11 @@ import React, {useState, useEffect} from "react"
 import facade from "./apiFacade";
 import {Outlet, Link} from "react-router-dom";
 import "./App.css";
+import apiFacade from "./apiFacade";
 
 
 function LogIn({login}) {
+
     const init = {username: "", password: ""};
     const [loginCredentials, setLoginCredentials] = useState(init);
 
@@ -15,6 +17,9 @@ function LogIn({login}) {
     const onChange = (evt) => {
         setLoginCredentials({...loginCredentials, [evt.target.id]: evt.target.value})
     }
+
+
+
 
     return (
 
@@ -31,7 +36,7 @@ function LogIn({login}) {
                     <input type="password" className="form-control" id="password" placeholder="Password"/>
                 </div>
 
-                <Link to="/">
+                <Link to="/welcome">
                     <button className="btn btn-primary login-element" onClick={performLogin}>Login</button>
                 </Link>
 
@@ -77,9 +82,7 @@ function App() {
                 (<div className="header">
                     <LoggedIn/>
 
-                    <Link to="/">
-                        <button className="btn btn-danger" id="logout-btn" onClick={logout}>Logout</button>
-                    </Link>
+                    <button className="btn btn-danger" id="logout-btn" onClick={logout}>Logout</button>
 
                     <nav
                         style={{
